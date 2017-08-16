@@ -5,9 +5,9 @@ Requires at least: 4.4
 Tested up to: 4.8.1
 Stable tag: 0.1.0
 Author: everpress
-Author URI:
+Author URI: https://bruteguard.co
 
-BruteGuard is a cloud powered brute force attack prevention plugin. We leverage the power of millions of WordPress sites to identify and block malicious IPs.
+BruteGuard is a cloud powered brute force attack prevention plugin that protects you against botnet attacks.
 
 == Description ==
 
@@ -20,13 +20,14 @@ Our plugin logs and blocks IPs across the entire network. The more users use Bru
 BruteGuard fully supports multi sites and is an additional security layer so can be used with any other security plugin.
 == Installation ==
 
-1. Under the Plugins tab in your WordPress admin click the Add New Button
-2. Type BruteGuard into the search field
-3. Click “Install Now” under the BruteGuard plugin name
-4. Once the plugin is installed click “Activate Now”
+1. Navigate to the Plugins tab in your WordPress admin and click the “Add New” button.
+2. Type BruteGuard into the search field.
+3. Click “Install Now” under the BruteGuard plugin name.
+4. Once the plugin is installed click “Activate Now”.
 5. Now you’ll see the new BruteGuard tab on the left, click on it.
 6. To get your required API Key enter your email address and click the “Get Protected” button.
-7. Watch for BruteGuard data on failed attempts in your dashboard
+7. We send you an email to confirm your activation.
+8. Watch for BruteGuard data on failed attempts in your dashboard.
 
 == Changelog ==
 

@@ -6,6 +6,7 @@ class BruteGuardAdmin {
 
 		add_action( 'admin_menu', array( $this, 'add_menu_page' ) );
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
+		add_action( 'admin_init', array( $this, 'maybe_redirect' ) );
 
 	}
 
@@ -21,6 +22,17 @@ class BruteGuardAdmin {
 		update_site_option( 'bruteguard_version', BRUTEGUARD_VERSION );
 		add_site_option( 'bruteguard_do_activation_redirect', true );
 		bruteguard()->activate();
+	}
+
+
+	public function maybe_redirect() {
+
+		if ( get_site_option( 'bruteguard_do_activation_redirect' ) ) {
+			delete_site_option( 'bruteguard_do_activation_redirect' );
+			wp_redirect( admin_url( 'admin.php?page=bruteguard' ) );
+			exit;
+		}
+
 	}
 
 
