@@ -1,6 +1,6 @@
 === BruteGuard ===
 Contributors: everpress
-Tags: bruteforce, login
+Tags: brute force, brute force attack, harden wp, security, bruteforce
 Requires at least: 4.4
 Tested up to: 4.8.1
 Stable tag: 0.1.0
@@ -11,16 +11,22 @@ BruteGuard is a cloud powered brute force attack prevention plugin. We leverage 
 
 == Description ==
 
-BruteGuard tracks failed login attempts across all installations. If an IP has too many failed attempts in a certain period of time the plugin blocks it from all sites where BruteGuard is installed. The plugin checks against our global database of malicious IPs to make sure that all sites running BruteGuard are protected against brute force attacks.
+=== Botnets and other malicious scripts attack millions of websites each and every day ===
+BruteGuard is a brute force attack prevention plugin that guards you against botnets by connecting its users to track failed login attempts across all WordPress installations that use the plugin. Once you activate BruteGuard you become part of a inter-connected protection layer against botnet attacks.
 
-By utilizing BruteGuard you are protected against traditional brute force attacks and distributed brute force attacks that use multiple locations.
+=== BruteGuard logs failed attempts network wide ===
+Our plugin logs and blocks IPs across the entire network. The more users use BruteGuard the safer the whole network including you gets.
 
+BruteGuard fully supports multi sites and is an additional security layer so can be used with any other security plugin.
 == Installation ==
 
-Upload the BruteGuard plugin to your WordPress site, activate it, then generate an API key.
-You’re all set!
-
-BruteGuard is a cloud powered brute force attack prevention plugin. We leverage the power of millions of WordPress sites to identify and block malicious IPs.
+1. Under the Plugins tab in your WordPress admin click the Add New Button
+2. Type BruteGuard into the search field
+3. Click “Install Now” under the BruteGuard plugin name
+4. Once the plugin is installed click “Activate Now”
+5. Now you’ll see the new BruteGuard tab on the left, click on it.
+6. To get your required API Key enter your email address and click the “Get Protected” button.
+7. Watch for BruteGuard data on failed attempts in your dashboard
 
 == Changelog ==
 
