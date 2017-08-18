@@ -116,6 +116,14 @@ class BruteGuard {
 		return get_transient( $transient );
 	}
 
+	public function get_main_blog_id() {
+		if ( ! is_multisite() ) {
+			return false;
+		}
+
+		return get_current_blog_id();
+	}
+
 	public function get_api_link( $email ) {
 
 		$url = $this->endpoint();

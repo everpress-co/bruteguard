@@ -3,7 +3,7 @@ Contributors: everpress
 Tags: brute force, brute force attack, harden wp, security, bruteforce
 Requires at least: 4.4
 Tested up to: 4.8.1
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 Author: everpress
 Author URI: https://bruteguard.co
 
@@ -30,6 +30,10 @@ BruteGuard fully supports multi sites and is an additional security layer so can
 8. Watch for BruteGuard data on failed attempts in your dashboard.
 
 == Changelog ==
+
+= Version 0.1.1 =
+
+fixed: call to undefined function get_main_blog_id`
 
 = Version 0.1.0 =
 
