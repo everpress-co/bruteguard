@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: BruteGuard
+Plugin Name: BruteGuard - Brute Force Protection
 Plugin URI: https://bruteguard.co
 Description: This plugin protects the WordPress backend from Bruteforce attacks with a global IP blacklist
 Version: 0.1.1
