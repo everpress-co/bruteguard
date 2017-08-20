@@ -1,5 +1,5 @@
 === BruteGuard - Brute Force Protection ===
-Contributors: everpress
+Contributors: everpress, bruteforce
 Tags: brute force, brute force attack, harden wp, security, bruteforce
 Requires at least: 4.4
 Tested up to: 4.8.1
