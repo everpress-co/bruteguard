@@ -8,6 +8,8 @@ class BruteGuardAdmin {
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 		add_action( 'admin_init', array( $this, 'maybe_redirect' ) );
 
+		add_action( 'wp_version_check', array( $this, 'clear_transients' ), 99 );
+
 	}
 
 	public static function deactivate() {
@@ -43,6 +45,7 @@ class BruteGuardAdmin {
 
 		add_action( "admin_print_styles-{$page}", array( $this, 'wp_enqueue_scripts' ) );
 		add_action( "admin_print_styles-{$page}", array( $this, 'check_api_key' ) );
+
 	}
 
 	public function admin_page() {
@@ -58,6 +61,18 @@ class BruteGuardAdmin {
 		register_setting( 'bruteguard', 'bruteguard_apikey', array( $this, 'validate_apikey' ) );
 		register_setting( 'bruteguard', 'bruteguard_whitelist', array( $this, 'validate_whitelist' ) );
 		register_setting( 'bruteguard', 'bruteguard_user', array( $this, 'validate_user' ) );
+	}
+
+	public function clear_transients() {
+
+		global $wpdb;
+
+		$timestamp = time() - MINUTE_IN_SECONDS;
+		$id = 'bruteguard_login';
+		// clear transients with a given timestamp
+		$sql = "DELETE a,b FROM `{$wpdb->options}` AS a LEFT JOIN `{$wpdb->options}` AS b ON REPLACE(a.option_name, '_transient_timeout_{$id}_', '') = REPLACE(b.option_name, '_transient_{$id}_', '') WHERE a.option_name LIKE '_transient_timeout_{$id}_%' AND a.option_value <= $timestamp";
+
+		$wpdb->query( $sql );
 	}
 
 	public function validate_user( $email ) {
