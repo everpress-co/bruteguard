@@ -1,9 +1,9 @@
-=== BruteGuard - Brute Force Protection ===
-Contributors: everpress, bruteforce
-Tags: brute force, brute force attack, harden wp, security, bruteforce
+=== BruteGuard – Brute Force Login Protection ===
+Contributors: everpress, bruteforce, login
+Tags: Brute Force, brute force attack, BruteForce, security, login
 Requires at least: 4.4
 Tested up to: 4.8
-Stable tag: 0.1.2
+Stable tag: 0.1.3
 Author: everpress
 Author URI: https://bruteguard.co
 
@@ -30,6 +30,10 @@ BruteGuard fully supports multi sites and is an additional security layer so can
 8. Watch for BruteGuard data on failed attempts in your dashboard.
 
 == Changelog ==
+
+= Version 0.1.3 =
+
+* added: translate able strings for backend
 
 = Version 0.1.2 =
 

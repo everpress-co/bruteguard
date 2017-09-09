@@ -82,7 +82,7 @@ class BruteGuardAdmin {
 		}
 
 		if ( ! is_email( $email ) ) {
-			add_settings_error( 'bruteguard_user', 'no_email', 'This is not a valid email address', 'error' );
+			add_settings_error( 'bruteguard_user', 'no_email', __( 'This is not a valid email address', 'bruteguard' ), 'error' );
 			return '';
 		}
 
@@ -101,11 +101,11 @@ class BruteGuardAdmin {
 		if ( 200 == $code ) {
 			$data = json_decode( $body );
 			update_site_option( 'bruteguard_apikey', $data->key );
-			add_settings_error( 'bruteguard_user', 'http_err', 'We have sent you a mail to ' . $email . '. Please click on the activation link!', 'updated' );
+			add_settings_error( 'bruteguard_user', 'http_err', sprintf( __( 'We have sent you a mail to %s. Please click on the activation link!', 'bruteguard' ), $email ), 'updated' );
 			return $email;
 		}
 
-		add_settings_error( 'bruteguard_user', 'http_err', 'There was an error processing your request!', 'error' );
+		add_settings_error( 'bruteguard_user', 'http_err', __( 'There was an error processing your request', 'bruteguard' ), 'error' );
 
 		return $email;
 	}
@@ -139,7 +139,7 @@ class BruteGuardAdmin {
 
 				switch ( $response['code'] ) {
 					case 401:
-						$message = 'Please activate your account by clicking the verification in the mail';
+						$message = __( 'Please activate your account by clicking the verification in the mail', 'bruteguard' );
 						break;
 					default:
 						$message = $response['error'];

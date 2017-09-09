@@ -1,16 +1,16 @@
 <?php
 /*
-Plugin Name: BruteGuard - Brute Force Protection
+Plugin Name: BruteGuard – Brute Force Login Protection
 Plugin URI: https://bruteguard.co
-Description: This plugin protects the WordPress backend from Bruteforce attacks with a global IP blacklist
-Version: 0.1.2
+Description: BruteGuard is a cloud powered brute force attack prevention plugin that protects you against botnet attacks.
+Version: 0.1.3
 Author: EverPress
 Author URI: https://everpress.io
 Tags: bruteguard
 License: GPLv2 or later
 */
 
-define( 'BRUTEGUARD_VERSION', '0.1.2' );
+define( 'BRUTEGUARD_VERSION', '0.1.3' );
 define( 'BRUTEGUARD_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'BRUTEGUARD_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'BRUTEGUARD_API_ENDPOINT', 'https://api.bruteguard.co/v1/' );
