@@ -86,6 +86,10 @@ class BruteGuardAdmin {
 			return '';
 		}
 
+		if ( $email == get_site_option( 'bruteguard_user' ) ) {
+			return $email;
+		}
+
 		$url = bruteguard()->get_api_link( $email );
 
 		$response = wp_remote_get( $url );
@@ -113,11 +117,6 @@ class BruteGuardAdmin {
 	public function validate_apikey( $apikey ) {
 
 		$apikey = trim( $apikey );
-
-		$response = bruteguard()->verify_apikey( $apikey );
-		if ( isset( $response['error'] ) ) {
-			// add_settings_error( 'bruteguard_apikey', $response['error'], $response['error'], 'error' );
-		}
 
 		return $apikey;
 
@@ -150,6 +149,7 @@ class BruteGuardAdmin {
 			} elseif ( isset( $response['status'] ) && 'ok' == $response['status'] ) {
 				update_site_option( 'bruteguard_apikey_status', 'verified' );
 				wp_redirect( admin_url( 'admin.php?page=bruteguard' ), 302 );
+				exit;
 
 			}
 		}

@@ -3,11 +3,11 @@ Contributors: everpress, bruteforce, login
 Tags: Brute Force, brute force attack, BruteForce, security, login
 Requires at least: 4.4
 Tested up to: 4.8
-Stable tag: 0.1.3
+Stable tag: 0.1.4
 Author: everpress
 Author URI: https://bruteguard.co
 
-BruteGuard is a cloud powered brute force attack prevention plugin that protects you against botnet attacks.
+BruteGuard is a cloud powered brute force login protection that shields your site against botnet attacks.
 
 == Description ==
 
@@ -30,6 +30,10 @@ BruteGuard fully supports multi sites and is an additional security layer so can
 8. Watch for BruteGuard data on failed attempts in your dashboard.
 
 == Changelog ==
+
+= Version 0.1.4 =
+
+* fixed: issue with storing white list
 
 = Version 0.1.3 =
 

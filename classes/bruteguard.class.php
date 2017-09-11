@@ -291,7 +291,7 @@ class BruteGuard {
 		return $this->api_endpoint;
 	}
 
-	public function get_stats() {
+	public function get_stats( $force = false ) {
 
 		$stats = $this->get_transient( 'bruteguard_stats' );
 		$status = get_site_option( 'bruteguard_apikey_status', 'inactive' );
@@ -306,7 +306,7 @@ class BruteGuard {
 			}
 		}
 
-		if ( ! $stats ) {
+		if ( ! $stats || $force ) {
 
 			$recheck = 1800;
 
@@ -322,8 +322,8 @@ class BruteGuard {
 			} else {
 				$recheck = 900;
 				if ( $response['code'] == 403 ) {
-					update_site_option( 'bruteguard_apikey', '' );
-					update_site_option( 'bruteguard_apikey_status', 'inactive' );
+					//update_site_option( 'bruteguard_apikey', '' );
+					//update_site_option( 'bruteguard_apikey_status', 'inactive' );
 				}
 				$stats = new WP_Error( $response['code'], $response['error'] );
 			}

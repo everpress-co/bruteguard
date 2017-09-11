@@ -12,18 +12,19 @@ $status = get_site_option( 'bruteguard_apikey_status', 'inactive' );
 
 <div class="wrap" id="bruteguard-page">
 <h1>BruteGuard</h1>
+	<form action="options.php" method="post">
+	<?php settings_fields( 'bruteguard' ); ?>
+	<?php do_settings_sections( 'bruteguard' ); ?>
 	<?php settings_errors(); ?>
 
 	<div class="metabox-holder">
 		<div id="mailster-mb-quick-links" class="postbox">
 		<h2 class="hndle"><span><?php esc_html_e( 'Activation', 'bruteguard' ); ?></span></h2>
 			<div class="inside">
-			<form action="options.php" method="post">
-			<?php settings_fields( 'bruteguard' ); ?>
-			<?php do_settings_sections( 'bruteguard' ); ?>
 			<div class="bruteguard-apikey-field">
 			<?php if ( $apikey && 'verified' == $status ) : ?>
 				<h3 class="active">BruteGuard is active</h3>
+				<input type="hidden" value="<?php echo esc_attr( $user ); ?>" name="bruteguard_user">
 			<?php else : ?>
 				<?php if ( $apikey ) : ?>
 					<h3 class="inactive">Pending Verification</h3>
@@ -41,7 +42,7 @@ $status = get_site_option( 'bruteguard_apikey_status', 'inactive' );
 				<?php endif; ?>
 			<?php endif; ?>
 			</div>
-			</form>
+			<input type="hidden" value="<?php echo esc_attr( $apikey ); ?>" name="bruteguard_apikey">
 
 			</div>
 		</div>
@@ -57,6 +58,7 @@ $status = get_site_option( 'bruteguard_apikey_status', 'inactive' );
 
 				<?php if ( is_wp_error( $stats ) ) : ?>
 					<?php
+
 					switch ( $stats->get_error_code() ) {
 						case '405':
 							echo 'Please register!';
@@ -97,8 +99,6 @@ $status = get_site_option( 'bruteguard_apikey_status', 'inactive' );
 	</div>
 
 
-	<form action="options.php" method="post">
-	<?php settings_fields( 'bruteguard' ); ?>
 		<div class="metabox-holder">
 			<div id="mailster-mb-quick-links" class="postbox">
 			<h2 class="hndle"><span><?php esc_html_e( 'White listed IPs', 'bruteguard' ); ?></span></h2>
@@ -118,8 +118,8 @@ $status = get_site_option( 'bruteguard_apikey_status', 'inactive' );
 			</div>
 
 		</div>
-	</form>
 	<?php endif; ?>
+</form>
 
 <div id="ajax-response"></div>
 <br class="clear">
