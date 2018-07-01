@@ -1,8 +1,8 @@
 === BruteGuard – Brute Force Login Protection ===
-Contributors: everpress, bruteforce, login
+Contributors: everpress
 Tags: Brute Force, brute force attack, BruteForce, security, login
 Requires at least: 4.4
-Tested up to: 4.8
+Tested up to: 4.9
 Stable tag: 0.1.4
 Author: everpress
 Author URI: https://bruteguard.co
