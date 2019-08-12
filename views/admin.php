@@ -1,8 +1,8 @@
 <?php
 $stats = bruteguard()->get_stats();
 
-$apikey = get_site_option( 'bruteguard_apikey' );
-$user = get_site_option( 'bruteguard_user' );
+$apikey    = get_site_option( 'bruteguard_apikey' );
+$user      = get_site_option( 'bruteguard_user' );
 $whitelist = get_site_option( 'bruteguard_whitelist' );
 
 $status = get_site_option( 'bruteguard_apikey_status', 'inactive' );
@@ -33,7 +33,7 @@ $status = get_site_option( 'bruteguard_apikey_status', 'inactive' );
 						<input type="submit" class="bruteguard-email-submit" value="<?php esc_attr_e( 'Send Activation Link', 'bruteguard' ); ?>" />
 						<a href="<?php echo add_query_arg( 'key', $apikey ); ?>">Check API key</a>
 					</div>
-		   		<?php else : ?>
+				<?php else : ?>
 					<h3 class="inactive">BruteGuard is inactive</h3>
 					<div class="bruteguard-email-field">
 						<input type="email" class="bruteguard-email" value="<?php echo esc_attr( $user ); ?>" placeholder="Enter Email" name="bruteguard_user" required>

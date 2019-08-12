@@ -41,7 +41,7 @@ class BruteGuardAdmin {
 	public function add_menu_page() {
 
 		// $page = add_submenu_page( 'tools.php', 'BruteGuard', 'BruteGuard', 'manage_options', 'bruteguard',  array( $this, 'admin_page' ) );
-		$page = add_menu_page( 'BruteGuard', 'BruteGuard', 'manage_options', 'bruteguard',  array( $this, 'admin_page' ), BRUTEGUARD_PLUGIN_URL . 'assets/menu-logo.svg' );
+		$page = add_menu_page( 'BruteGuard', 'BruteGuard', 'manage_options', 'bruteguard', array( $this, 'admin_page' ), BRUTEGUARD_PLUGIN_URL . 'assets/menu-logo.svg' );
 
 		add_action( "admin_print_styles-{$page}", array( $this, 'wp_enqueue_scripts' ) );
 		add_action( "admin_print_styles-{$page}", array( $this, 'check_api_key' ) );
@@ -68,7 +68,7 @@ class BruteGuardAdmin {
 		global $wpdb;
 
 		$timestamp = time() - MINUTE_IN_SECONDS;
-		$id = 'bruteguard_login';
+		$id        = 'bruteguard_login';
 		// clear transients with a given timestamp
 		$sql = "DELETE a,b FROM `{$wpdb->options}` AS a LEFT JOIN `{$wpdb->options}` AS b ON REPLACE(a.option_name, '_transient_timeout_{$id}_', '') = REPLACE(b.option_name, '_transient_{$id}_', '') WHERE a.option_name LIKE '_transient_timeout_{$id}_%' AND a.option_value <= $timestamp";
 
@@ -130,7 +130,7 @@ class BruteGuardAdmin {
 	}
 	public function check_api_key() {
 		if ( isset( $_GET['key'] ) ) {
-			$apikey = trim( $_GET['key'] );
+			$apikey   = trim( $_GET['key'] );
 			$response = bruteguard()->verify_apikey( $apikey );
 			update_site_option( 'bruteguard_apikey', $apikey );
 

@@ -20,5 +20,5 @@ require_once BRUTEGUARD_PLUGIN_DIR . 'classes/bruteguard.class.php';
 bruteguard();
 bruteguard( 'admin' );
 
-register_activation_hook( __FILE__,  array( 'BruteGuardAdmin', 'activate' ) );
-register_deactivation_hook( __FILE__,  array( 'BruteGuardAdmin', 'deactivate' ) );
+register_activation_hook( __FILE__, array( 'BruteGuardAdmin', 'activate' ) );
+register_deactivation_hook( __FILE__, array( 'BruteGuardAdmin', 'deactivate' ) );

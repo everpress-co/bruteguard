@@ -43,7 +43,7 @@ class BruteGuard {
 
 			$this->set_transient( 'bruteguard_headers_updated_recently', 1, DAY_IN_SECONDS );
 
-			$headers = $this->get_headers();
+			$headers        = $this->get_headers();
 			$trusted_header = 'REMOTE_ADDR';
 
 			if ( count( $headers ) == 1 ) {
@@ -128,11 +128,14 @@ class BruteGuard {
 
 		$url = $this->endpoint();
 
-		$url = add_query_arg(array(
-			'action' => 'register',
-			'domain' => $this->get_local_host(),
-			'email' => $email,
-		), $url);
+		$url = add_query_arg(
+			array(
+				'action' => 'register',
+				'domain' => $this->get_local_host(),
+				'email'  => $email,
+			),
+			$url
+		);
 
 		return $url;
 
@@ -170,9 +173,9 @@ class BruteGuard {
 		$domain = $uridata['host'];
 
 		if ( ! $domain ) {
-			$uri = get_site_url( 1 );
+			$uri     = get_site_url( 1 );
 			$uridata = parse_url( $uri );
-			$domain = $uridata['host'];
+			$domain  = $uridata['host'];
 		}
 
 		$this->local_host = $domain;
@@ -191,12 +194,12 @@ class BruteGuard {
 
 		$brute_ua = "WordPress/{$wp_version} | BruteGuard/" . BRUTEGUARD_VERSION;
 
-		$body = array(
-			'action' => $action,
-			'ip' => $this->get_ip(),
+		$body    = array(
+			'action'             => $action,
+			'ip'                 => $this->get_ip(),
 			'bruteguard_version' => BRUTEGUARD_VERSION,
-			'wordpress_version' => strval( $wp_version ),
-			'multisite' => 0,
+			'wordpress_version'  => strval( $wp_version ),
+			'multisite'          => 0,
 		);
 		$headers = array(
 			'x-domain' => $this->get_local_host(),
@@ -230,8 +233,8 @@ class BruteGuard {
 
 		$this->last_response_raw = $response_json;
 
-		$headers = $this->get_headers();
-		$header_hash = md5( json_encode( $headers ) );
+		$headers        = $this->get_headers();
+		$header_hash    = md5( json_encode( $headers ) );
 		$transient_name = 'bruteguard_login_' . $header_hash;
 
 		$this->delete_transient( $transient_name );
@@ -247,13 +250,13 @@ class BruteGuard {
 				$this->set_transient( $transient_name, $response, $response['seconds_remaining'] );
 			endif;
 
-		else :
+			else :
 				$this->set_transient( 'bruteguarde_use_captcha', 1, 600 );
-				$response['status'] = 'ok';
+				$response['status']  = 'ok';
 				$response['catpcha'] = true;
 		endif;
 
-		if ( isset( $response['error'] ) ) :
+			if ( isset( $response['error'] ) ) :
 				 update_site_option( 'bruteguard_error', $response['error'] );
 		else :
 				delete_site_option( 'bruteguard_error' );
@@ -269,7 +272,7 @@ class BruteGuard {
 			return $this->api_endpoint;
 		}
 
-		$https = $this->get_transient( 'bruteguard_https' );
+		$https   = $this->get_transient( 'bruteguard_https' );
 		$api_url = trailingslashit( BRUTEGUARD_API_ENDPOINT );
 		if ( $https == 'yes' ) {
 			$this->api_endpoint = set_url_scheme( $api_url, 'https' );
@@ -282,7 +285,7 @@ class BruteGuard {
 
 			$https = 'no';
 			if ( ! is_wp_error( $test ) && $test['body'] == 'ok' ) {
-				$https = 'yes';
+				$https              = 'yes';
 				$this->api_endpoint = set_url_scheme( $api_url, 'https' );
 			}
 			$this->set_transient( 'bruteguard_https', $https, 86 );
@@ -293,7 +296,7 @@ class BruteGuard {
 
 	public function get_stats( $force = false ) {
 
-		$stats = $this->get_transient( 'bruteguard_stats' );
+		$stats  = $this->get_transient( 'bruteguard_stats' );
 		$status = get_site_option( 'bruteguard_apikey_status', 'inactive' );
 		$apikey = get_site_option( 'bruteguard_apikey' );
 
@@ -301,7 +304,7 @@ class BruteGuard {
 			$r = $this->verify_apikey( $apikey );
 			if ( isset( $r['code'] ) && 401 == $r['code'] ) {
 				update_site_option( 'bruteguard_apikey_status', 'pending' );
-			} elseif ( ! isset( $r['code'] ) && isset( $r['status'] ) && 'ok' == $r['status']  ) {
+			} elseif ( ! isset( $r['code'] ) && isset( $r['status'] ) && 'ok' == $r['status'] ) {
 				update_site_option( 'bruteguard_apikey_status', 'verified' );
 			}
 		}
@@ -310,20 +313,20 @@ class BruteGuard {
 
 			$recheck = 1800;
 
-			$stats = array();
+			$stats    = array();
 			$response = $this->call( 'stats' );
 
 			if ( ! isset( $response['error'] ) ) {
 				$stats['stats'] = $response['stats'];
-				$stats['rate'] = $response['rate'];
+				$stats['rate']  = $response['rate'];
 				if ( isset( $response['refresh'] ) ) {
 					$recheck = intval( $response['refresh'] );
 				}
 			} else {
 				$recheck = 900;
 				if ( $response['code'] == 403 ) {
-					//update_site_option( 'bruteguard_apikey', '' );
-					//update_site_option( 'bruteguard_apikey_status', 'inactive' );
+					// update_site_option( 'bruteguard_apikey', '' );
+					// update_site_option( 'bruteguard_apikey_status', 'inactive' );
 				}
 				$stats = new WP_Error( $response['code'], $response['error'] );
 			}
@@ -341,7 +344,7 @@ class BruteGuard {
 			return $this->headers;
 		}
 
-		$this->headers = array();
+		$this->headers      = array();
 		$ip_related_headers = array(
 			'GD_PHP_HANDLER',
 			'HTTP_AKAMAI_ORIGIN_HOP',
@@ -382,8 +385,8 @@ class BruteGuard {
 		}
 
 		$whitelist = get_site_option( 'bruteguard_whitelist', '' );
-		$wl_items = explode( PHP_EOL, $whitelist );
-		$iplong = ip2long( $ip );
+		$wl_items  = explode( PHP_EOL, $whitelist );
+		$iplong    = ip2long( $ip );
 
 		if ( is_array( $wl_items ) ) :
 			foreach ( $wl_items as $item ) :
@@ -398,7 +401,7 @@ class BruteGuard {
 					continue;
 				}
 
-				$ip_low = ip2long( str_replace( '*', '0', $item ) );
+				$ip_low  = ip2long( str_replace( '*', '0', $item ) );
 				$ip_high = ip2long( str_replace( '*', '255', $item ) );
 
 				if ( $iplong >= $ip_low && $iplong <= $ip_high ) {
@@ -419,7 +422,7 @@ class BruteGuard {
 
 		$ip = $this->get_ip();
 
-		$headers = $this->get_headers();
+		$headers     = $this->get_headers();
 		$header_hash = md5( json_encode( $headers ) );
 
 		$transient_name = 'bruteguard_login_' . $header_hash;
@@ -447,22 +450,22 @@ class BruteGuard {
 		$ip = $this->get_ip();
 		do_action( 'bruteguard_kill', $ip );
 		wp_die(
-	        __( 'Your IP "' . $ip . '" has been flagged for potential security violations. Please try again in a little while...', 'bruteguard' ),
-	        __( 'Blocked by BruteGuard', 'bruteguard' ),
-	        array( 'response' => 403 )
+			__( 'Your IP "' . $ip . '" has been flagged for potential security violations. Please try again in a little while...', 'bruteguard' ),
+			__( 'Blocked by BruteGuard', 'bruteguard' ),
+			array( 'response' => 403 )
 		);
 	}
 
 	public function verify_apikey( $apikey ) {
-		$this->api_key = $apikey;
-		$response = $this->call( 'verify' );
+		$this->api_key  = $apikey;
+		$response       = $this->call( 'verify' );
 		$this->appi_key = null;
 		return $response;
 	}
 
 	private function get_ip() {
 
-		$ip = '';
+		$ip      = '';
 		$headers = $this->get_headers();
 		foreach ( $headers as $header => $value ) {
 			foreach ( explode( ',', $value ) as $ip ) {
