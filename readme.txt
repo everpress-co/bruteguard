@@ -2,9 +2,9 @@
 Contributors: everpress
 Tags: Brute Force, brute force attack, BruteForce, security, login
 Requires at least: 4.4
-Tested up to: 5.2
+Tested up to: 5.3
 Stable tag: 0.1.4
-Author: everpress
+Author: EverPress
 Author URI: https://bruteguard.co
 
 BruteGuard is a cloud powered brute force login protection that shields your site against botnet attacks.
