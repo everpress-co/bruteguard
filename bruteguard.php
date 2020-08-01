@@ -5,7 +5,7 @@ Plugin URI: https://bruteguard.co
 Description: BruteGuard is a cloud powered brute force login protection that shields your site against botnet attacks.
 Version: 0.1.4
 Author: EverPress
-Author URI: https://everpress.io
+Author URI: https://everpress.co
 Tags: bruteguard
 License: GPLv2 or later
 */
