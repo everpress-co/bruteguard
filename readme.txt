@@ -2,7 +2,7 @@
 Contributors: everpress
 Tags: Brute Force, brute force attack, BruteForce, security, login
 Requires at least: 4.4
-Tested up to: 5.5
+Tested up to: 5.8
 Stable tag: 0.1.4
 Author: EverPress
 Author URI: https://bruteguard.co
