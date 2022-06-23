@@ -35,7 +35,10 @@ BruteGuard fully supports multi sites and is an additional security layer so can
 
 ## Screenshots
 
-1. Option Interface.
+### 1. Option Interface.
+
+![Option Interface.](https://ps.w.org/bruteguard/assets/screenshot-1.png)
+
 
 ## Changelog
 
