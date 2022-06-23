@@ -33,13 +33,6 @@ BruteGuard fully supports multi sites and is an additional security layer so can
 7. We send you an email to confirm your activation.
 8. Watch for BruteGuard data on failed attempts in your dashboard.
 
-## Screenshots
-
-### 1. Option Interface.
-
-![Option Interface.](https://ps.w.org/bruteguard/assets/screenshot-1.png)
-
-
 ## Changelog
 
 ### 0.1.4
