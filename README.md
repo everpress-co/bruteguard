@@ -3,7 +3,7 @@
 Contributors: everpress  
 Tags: Brute Force, brute force attack, BruteForce, security, login  
 Requires at least: 4.4  
-Tested up to: 5.9  
+Tested up to: 6.0  
 Stable tag: 0.1.4  
 Author: EverPress  
 Author URI: https://bruteguard.co
@@ -33,10 +33,6 @@ BruteGuard fully supports multi sites and is an additional security layer so can
 7. We send you an email to confirm your activation.
 8. Watch for BruteGuard data on failed attempts in your dashboard.
 
-## Screenshots
-
-1. Option Interface.
-
 ## Changelog
 
 ### 0.1.4
@@ -53,7 +49,7 @@ BruteGuard fully supports multi sites and is an additional security layer so can
 
 ### 0.1.1
 
--   fixed: call to undefined function `get_main_blog_id`
+-   fixed: call to undefined function get_main_blog_id`
 
 ### 0.1.0
 
