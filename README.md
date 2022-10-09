@@ -1,6 +1,6 @@
 # BruteGuard – Brute Force Login Protection
 
-Contributors: everpress  
+Contributors: everpress, xaverb  
 Tags: Brute Force, brute force attack, BruteForce, security, login  
 Requires at least: 4.4  
 Tested up to: 6.0  
